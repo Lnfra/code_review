@@ -10,6 +10,7 @@
 CodeLanguage.destroy_all
 Location.destroy_all
 Role.destroy_all
+Classroom.destroy_all
 
 [
     {name: "Javascript"},
@@ -41,4 +42,22 @@ end
     {name: "Administrator"}
 ].each do |role|
   Role.create!(role)
+end
+
+[
+    {
+        name: "SG WDI 2",
+        start_date: Date.parse("2016-02-15"),
+        end_date: Date.parse("2016-05-16"),
+        location_id: 1
+    },
+    {
+        name: "SG WDI 1",
+        start_date: Date.parse("2015-11-06"),
+        end_date: Date.parse("2016-01-07"),
+        location_id: 1
+    }
+
+].each do |classroom|
+  Classroom.create!(classroom)
 end
