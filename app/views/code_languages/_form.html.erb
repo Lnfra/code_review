@@ -1,0 +1,17 @@
+<%= form_for(@code_language) do |f| %>
+  <% if @code_language.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@code_language.errors.count, "error") %> prohibited this code_language from being saved:</h2>
+
+      <ul>
+      <% @code_language.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
