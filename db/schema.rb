@@ -78,10 +78,11 @@ ActiveRecord::Schema.define(version: 20160321092022) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.binary   "profile_photo"
-    t.boolean  "is_teacher"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "photo_filename"
+    t.string   "photo_content_type"
+    t.binary   "photo_file_contents"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.integer  "classroom_id"
   end
 

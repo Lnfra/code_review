@@ -26,29 +26,29 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+    # initially set all accounts as student type
+    @user.roles << Role.find_by_name("Student")
+
+    save_photo
+
+    if @user.save
+        redirect_to @user, notice: 'User was successfully created.'
       else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        render :new
       end
-    end
+
   end
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    save_photo
+    if @user.update(user_params)
+       redirect_to @user, notice: 'User was successfully updated.'
+    else
+      render :edit
     end
+
   end
 
   # DELETE /users/1
@@ -57,18 +57,36 @@ class UsersController < ApplicationController
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
+  def profile_photo
+      @user = User.find(params[:id])
+      send_data @user.photo_file_contents, :type => @user.photo_content_type,:disposition => 'inline'
+  end
+
   private
+
+    def sanitize_filename(filename)
+      # Get only the filename, not the whole path (for IE)
+      # Thanks to this article I just found for the tip: http://mattberther.com/2007/10/19/uploading-files-to-a-database-using-rails
+      return File.basename(filename)
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
     end
 
+    def save_photo
+      @photo = params[:user].delete :photo
+      if @photo
+        @user.photo_filename = sanitize_filename(@photo.original_filename)
+        @user.photo_content_type = @photo.content_type
+        @user.photo_file_contents = @photo.read
+      end
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.fetch(:user, {})
+      params.require(:user).permit(:name, :email, :classroom_id, :password, :password_confirmation)
     end
 end
