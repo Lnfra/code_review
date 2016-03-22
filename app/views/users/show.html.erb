@@ -1,6 +1,48 @@
 <p id="notice"><%= notice %></p>
 
-<%= render 'form' %>
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Password digest:</strong>
+  <%= @user.password_digest %>
+</p>
+
+<!--<p>-->
+  <!--<strong>Photo filename:</strong>-->
+  <!--<%= @user.photo_filename %>-->
+<!--</p>-->
+
+<!--<p>-->
+  <!--<strong>Photo content type:</strong>-->
+  <!--<%= @user.photo_content_type %>-->
+<!--</p>-->
+
+<p>
+  <strong>Profile Photo:</strong>
+  <%= image_tag(url_for(:controller => "users", :action => "profile_photo", :id => @user.id), :width => '100') %>
+</p>
+
+<p>
+  <strong>Classroom:</strong>
+  <%= @user.classroom.name %>
+</p>
+
+<p>
+  <strong>Roles:</strong>
+  <%= @user.roles.collect(&:name).join(",") %>
+  <!--<% @user.roles do |role| %>-->
+      <!--<span><%= role[:name] %></span>-->
+  <!--<% end %>-->
+
+</p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

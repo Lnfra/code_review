@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :classrooms
   resources :users
   get 'users/:id/profile_photo' => 'users#profile_photo'
+  root "users#index"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
