@@ -2,13 +2,11 @@ class CodeLanguagesController < ApplicationController
   before_action :set_code_language, only: [:show, :edit, :update, :destroy]
 
   # GET /code_languages
-  # GET /code_languages.json
   def index
     @code_languages = CodeLanguage.all
   end
 
   # GET /code_languages/1
-  # GET /code_languages/1.json
   def show
   end
 
@@ -22,43 +20,28 @@ class CodeLanguagesController < ApplicationController
   end
 
   # POST /code_languages
-  # POST /code_languages.json
   def create
     @code_language = CodeLanguage.new(code_language_params)
-
-    respond_to do |format|
-      if @code_language.save
-        format.html { redirect_to @code_language, notice: 'Code language was successfully created.' }
-        format.json { render :show, status: :created, location: @code_language }
-      else
-        format.html { render :new }
-        format.json { render json: @code_language.errors, status: :unprocessable_entity }
-      end
+    if @code_language.save
+      redirect_to @code_language, notice: 'Code language was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /code_languages/1
-  # PATCH/PUT /code_languages/1.json
   def update
-    respond_to do |format|
-      if @code_language.update(code_language_params)
-        format.html { redirect_to @code_language, notice: 'Code language was successfully updated.' }
-        format.json { render :show, status: :ok, location: @code_language }
-      else
-        format.html { render :edit }
-        format.json { render json: @code_language.errors, status: :unprocessable_entity }
-      end
+    if @code_language.update(code_language_params)
+      redirect_to @code_language, notice: 'Code language was successfully updated.'
+    else
+      render :edit
     end
   end
 
   # DELETE /code_languages/1
-  # DELETE /code_languages/1.json
   def destroy
     @code_language.destroy
-    respond_to do |format|
-      format.html { redirect_to code_languages_url, notice: 'Code language was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to code_languages_url, notice: 'Code language was successfully destroyed.'
   end
 
   private
@@ -69,6 +52,6 @@ class CodeLanguagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def code_language_params
-      params.fetch(:code_language, {})
+      params.require(:code_language).permit(:name)
     end
 end

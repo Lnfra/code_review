@@ -1,4 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <strong>Name:</strong>
+  <%= @code_language.name %>
+</p>
+
 <%= link_to 'Edit', edit_code_language_path(@code_language) %> |
 <%= link_to 'Back', code_languages_path %>

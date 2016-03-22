@@ -11,6 +11,22 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city %><br>
+    <%= f.select :city, options_for_select(['Singapore', 'Melbourne', 'Sydney', 'Hong Kong', 'London', 'Atlanta',
+        'Austin', 'Boston', 'Chicago', 'Denver', 'Los Angeles', 'New York', 'San Francisco', 'Seattle', 'Washington'], :selected => f.object.city) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :country %><br>
+    <%= f.select :country, options_for_select(['Singapore', 'Australia', 'USA', 'China', 'UK'], :selected => f.object.country) %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

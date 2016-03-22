@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Name</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,6 +13,7 @@
   <tbody>
     <% @code_languages.each do |code_language| %>
       <tr>
+        <td><%= code_language.name %></td>
         <td><%= link_to 'Show', code_language %></td>
         <td><%= link_to 'Edit', edit_code_language_path(code_language) %></td>
         <td><%= link_to 'Destroy', code_language, method: :delete, data: { confirm: 'Are you sure?' } %></td>

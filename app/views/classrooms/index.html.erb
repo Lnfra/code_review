@@ -5,6 +5,10 @@
 <table>
   <thead>
     <tr>
+      <th>Name</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Location</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,6 +16,10 @@
   <tbody>
     <% @classrooms.each do |classroom| %>
       <tr>
+        <td><%= classroom.name %></td>
+        <td><%= classroom.start_date %></td>
+        <td><%= classroom.end_date %></td>
+        <td><%= classroom.location.name %></td>
         <td><%= link_to 'Show', classroom %></td>
         <td><%= link_to 'Edit', edit_classroom_path(classroom) %></td>
         <td><%= link_to 'Destroy', classroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
