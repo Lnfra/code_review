@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   resources :classrooms
   resources :users
   get 'users/:id/profile_photo' => 'users#profile_photo'
+
+  #Provide an alternative name for users to access the sessions new route
+  get 'login', to: 'sessions#new'
+  delete 'logout', to: 'sessions#destroy'
+  resources :sessions, only: [:new, :create, :destroy]
+
   root "users#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

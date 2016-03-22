@@ -9,6 +9,20 @@
 </head>
 <body>
 
+<!--Display amy messages in the flash array with the required style-->
+<% flash.each do |name, message| %>
+    <div class="flash-message flash-message-<%= name %>">
+      <%= message %>
+    </div>
+<% end %>
+
+<% if get_current_user %>
+    <h1>Hello, <%= get_current_user.email %></h1>
+    <%= link_to 'Logout', logout_path, method: :delete, data: {confirm: 'Are you Sure?'} %>
+<% else %>
+    <% link_to 'Please Login', login_path %>
+<% end %>
+
 <%= yield %>
 
 </body>
