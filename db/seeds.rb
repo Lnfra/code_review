@@ -11,6 +11,7 @@ CodeLanguage.destroy_all
 Location.destroy_all
 Role.destroy_all
 Classroom.destroy_all
+User.destroy_all
 
 [
     {name: "Javascript"},
@@ -49,15 +50,63 @@ end
         name: "SG WDI 2",
         start_date: Date.parse("2016-02-15"),
         end_date: Date.parse("2016-05-16"),
-        location_id: 1
+        location: Location.find_by_name('GA Singapore')
     },
     {
         name: "SG WDI 1",
         start_date: Date.parse("2015-11-06"),
         end_date: Date.parse("2016-01-07"),
-        location_id: 1
+        location: Location.find_by_name('GA Singapore')
     }
 
 ].each do |classroom|
   Classroom.create!(classroom)
+end
+
+
+#To populate one to many relationship use Classroom.find_by_name
+#To populate one has and belongs to many relationship, use Role.where(:name => ...)
+[
+    {
+        :name => 'Irvin',
+        :roles => Role.where(:name => ['Teaching Assistant', 'Administrator']),
+        :email => 'irvin@gf.com',
+        :password => 'password',
+        :password_confirmation => 'password',
+        :classroom => Classroom.find_by_name('SG WDI 2')
+    },
+    {
+        :name => 'Jesstern',
+        :roles => Role.where(:name => ['Teaching Assistant', 'Administrator']),
+        :email => 'jesstern@gf.com',
+        :password => 'password',
+        :password_confirmation => 'password',
+        :classroom => Classroom.find_by_name('SG WDI 2')
+    },
+    {
+        :name => 'Jeremiah',
+        :roles => Role.where(:name => ['Instructor', 'Administrator']),
+        :email => 'jeremiah@gf.com',
+        :password => 'password',
+        :password_confirmation => 'password',
+        :classroom => Classroom.find_by_name('SG WDI 2')
+    },
+    {
+        :name => 'Angeline',
+        :roles => Role.where(:name => ['Student', 'Administrator']),
+        :email => 'angeline@gf.com',
+        :password => 'password',
+        :password_confirmation => 'password',
+        :classroom => Classroom.find_by_name('SG WDI 2')
+    },
+    {
+        :name => 'John',
+        :roles => Role.where(:name => ['Student']),
+        :email => 'john@gf.com',
+        :password => 'password',
+        :password_confirmation => 'password',
+        :classroom => Classroom.find_by_name('SG WDI 2')
+    }
+].each do |user|
+  User.create!(user)
 end
