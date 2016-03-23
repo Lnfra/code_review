@@ -30,8 +30,6 @@ class UsersController < ApplicationController
     # initially set all accounts as student type
     @user.roles << Role.find_by_name("Student")
 
-    save_photo
-
     if @user.save
         redirect_to @user, notice: 'User was successfully created.'
       else
@@ -42,7 +40,6 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
-    save_photo
     if @user.update(user_params)
        redirect_to @user, notice: 'User was successfully updated.'
     else
@@ -59,33 +56,15 @@ class UsersController < ApplicationController
     end
   end
 
-  def profile_photo
-      @user = User.find(params[:id])
-      send_data @user.photo_file_contents, :type => @user.photo_content_type,:disposition => 'inline'
-  end
-
   private
 
-    def sanitize_filename(filename)
-      # Get only the filename, not the whole path (for IE)
-      # Thanks to this article I just found for the tip: http://mattberther.com/2007/10/19/uploading-files-to-a-database-using-rails
-      return File.basename(filename)
-    end
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
     end
 
-    def save_photo
-      @photo = params[:user].delete :photo
-      if @photo
-        @user.photo_filename = sanitize_filename(@photo.original_filename)
-        @user.photo_content_type = @photo.content_type
-        @user.photo_file_contents = @photo.read
-      end
-    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email, :classroom_id, :password, :password_confirmation, :role_ids => [])
+      params.require(:user).permit(:avatar, :name, :email, :classroom_id, :password, :password_confirmation, :role_ids => [])
     end
 end

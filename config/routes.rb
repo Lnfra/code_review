@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   resources :questions
   resources :classrooms
   resources :users
-  get 'users/:id/profile_photo' => 'users#profile_photo'
 
   #Provide an alternative name for users to access the sessions new route
   get 'login', to: 'sessions#new'

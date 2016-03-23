@@ -1,4 +1,11 @@
 class User < ActiveRecord::Base
+
+  #Required for using paperclip photo upload
+  has_attached_file :avatar,
+                    styles: { medium: "300x300>", thumb: "100x100>" },
+                    default_url: ":style/default-avatar.jpg"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
   belongs_to :classroom
   has_many :questions
   has_many :answers

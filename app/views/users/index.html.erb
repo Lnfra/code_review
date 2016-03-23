@@ -21,7 +21,7 @@
         <td><%= user.email %></td>
         <td><%= user.password_digest %></td>
         <td><%= user.classroom.name %></td>
-        <td><%= image_tag(url_for(:controller => "users", :action => "profile_photo", :id => user.id), :width => '100') %></td>
+        <td><%= image_tag user.avatar.url(:thumb) %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>

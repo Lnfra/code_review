@@ -15,19 +15,9 @@
   <%= @user.password_digest %>
 </p>
 
-<!--<p>-->
-  <!--<strong>Photo filename:</strong>-->
-  <!--<%= @user.photo_filename %>-->
-<!--</p>-->
-
-<!--<p>-->
-  <!--<strong>Photo content type:</strong>-->
-  <!--<%= @user.photo_content_type %>-->
-<!--</p>-->
-
 <p>
   <strong>Profile Photo:</strong>
-  <%= image_tag(url_for(:controller => "users", :action => "profile_photo", :id => @user.id), :width => '100') %>
+  <%= image_tag @user.avatar.url(:medium) %>
 </p>
 
 <p>

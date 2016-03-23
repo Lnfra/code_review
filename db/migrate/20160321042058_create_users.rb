@@ -4,9 +4,10 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :email
       t.string :password_digest
-      t.string :photo_filename
-      t.string :photo_content_type
-      t.binary :photo_file_contents
+
+      #Column for paperclip link to profile photo
+      t.attachment :avatar
+
       t.timestamps null: false
 
       #Foreign key to classroom
