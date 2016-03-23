@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>CodeReview</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -8,24 +12,65 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<!--Display amy messages in the flash array with the required style-->
-<% flash.each do |name, message| %>
-    <div class="flash-message flash-message-<%= name %>">
-      <%= message %>
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Code Reviewer</a>
     </div>
-<% end %>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">Nav header</li>
+            <li><a href="#">Separated link</a></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="../navbar/">Default</a></li>
+        <li><a href="../navbar-static-top/">Static top</a></li>
+        <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
 
-<% if get_current_user %>
-    <h1>Hello, <%= get_current_user.email %></h1>
-    <%= link_to 'Logout', logout_path, method: :delete, data: {confirm: 'Are you Sure?'} %>
-<% else %>
-    <% link_to 'Please Login', login_path %>
-<% end %>
+<div class="container">
+  <!--Display any messages in the flash array with the required style-->
+  <% flash.each do |name, message| %>
+      <div class="flash-message flash-message-<%= name %>">
+        <%= message %>
+      </div>
+  <% end %>
 
-<%= yield %>
+  <% if get_current_user %>
+      <h1>Hello, <%= get_current_user.email %></h1>
+      <%= link_to 'Logout', logout_path, method: :delete, data: {confirm: 'Are you Sure?'} %>
+  <% else %>
+      <% link_to 'Please Login', login_path %>
+  <% end %>
 
+  <%= yield %>
+
+</div> <!-- /container -->
   <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
   <script src="http://cdn.jsdelivr.net/ace/1.2.0/min/ace.js" type="text/javascript" charset="utf-8"></script>
+</div>
 </body>
 </html>
