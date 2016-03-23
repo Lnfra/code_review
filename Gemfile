@@ -35,6 +35,10 @@ gem "figaro"
 gem 'rails_12factor', group: :production
 gem 'puma'
 
+# Require the Markdown converter gem
+#https://github.com/vmg/redcarpet
+gem 'redcarpet'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

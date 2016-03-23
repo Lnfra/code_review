@@ -250,6 +250,7 @@ GEM
       trollop
     rdoc (4.2.2)
       json (~> 1.4)
+    redcarpet (3.3.4)
     ruby-graphviz (1.2.2)
     sass (3.4.21)
     sass-rails (5.0.4)
@@ -303,6 +304,7 @@ DEPENDENCIES
   rails (= 4.2.6)
   rails-erd
   rails_12factor
+  redcarpet
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring

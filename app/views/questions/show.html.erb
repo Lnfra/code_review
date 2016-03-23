@@ -5,11 +5,8 @@
   <%= @question.title %>
 </p>
 
-<p>
-  <strong>Content:</strong>
-  <pre class="prettyprint">
-    <%= @question.content %>
-  </pre>
+<strong>Content:</strong>
+<%= markdown(@question.content) %>
 </p>
 
 <p>
