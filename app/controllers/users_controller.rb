@@ -1,9 +1,15 @@
 class UsersController < ApplicationController
 
   #Only allow logged in user to access the below actions
-  before_action :restrict_access, only: [:edit, :update, :destroy]
+  before_action :restrict_access, only: [:edit, :update, :destroy, :landing]
 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+
+  #Get /landing
+  def landing
+    #Get all the questions
+    @questions = Question.all
+  end
 
   # GET /users
   def index

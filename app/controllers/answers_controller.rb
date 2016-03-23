@@ -1,4 +1,7 @@
 class AnswersController < ApplicationController
+
+  before_action :restrict_access, only: [:edit, :update, :destroy, :landing, :index]
+
   before_action :set_answer, only: [:show, :edit, :update, :destroy]
 
   # GET /answers
@@ -13,6 +16,23 @@ class AnswersController < ApplicationController
   # GET /answers/new
   def new
     @answer = Answer.new
+  end
+
+  # GET /submit_answer/1
+  def submit_answer
+    @question = Question.find(params[:id])
+    @answer = Answer.new
+  end
+
+  #Post /create_answer
+  def create_answer
+    @answer = Answer.new(answer_params)
+    if @answer.save
+      redirect_to @answer, notice: 'Answer was successfully created.'
+      # redirect_to answer_path(@answer, id: @answer.), :notice => 'Answer was successfully created.'
+    else
+      render :new
+    end
   end
 
   # GET /answers/1/edit

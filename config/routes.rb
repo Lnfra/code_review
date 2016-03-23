@@ -14,7 +14,16 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   resources :sessions, only: [:new, :create, :destroy]
 
-  root "users#index"
+  #route for landing page
+  get 'landing', to: 'users#landing'
+
+  #route for submitting a new answer for a question
+  get 'submit_answer/:id' => 'answers#submit_answer',  as: :submit_answer
+
+  #route for creating submitted answer for a question
+  post 'create_answer' => 'answers#create_answer'
+
+  root "users#landing"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

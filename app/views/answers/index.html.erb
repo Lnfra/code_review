@@ -2,7 +2,7 @@
 
 <h1>Listing Answers</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Content</th>
@@ -24,9 +24,9 @@
         <td><%= answer.user.name %></td>
         <td><%= answer.question.title %></td>
         <td><%= answer.code_language.name %></td>
-        <td><%= link_to 'Show', answer %></td>
+        <td><%= link_to 'View', answer %></td>
         <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
-        <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
