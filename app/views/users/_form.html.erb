@@ -1,54 +1,61 @@
-<%= form_for(@user, html: { multipart: true }) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-    <%= image_tag @user.avatar.url(:medium) %>
-    <div class="field">
-      <%= f.label :photo %>
-      <%= f.file_field :avatar %>
-    </div>
-
-    <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </div>
-
-    <div class="field">
-      <%= f.label :email %>
-      <%= f.text_field :email %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation %>
-    </div>
-
-    <div class="field">
-      <%= f.label :classroom_id %>
-      <%= f.select :classroom_id, options_from_collection_for_select(Classroom.all, :id, :name, :selected => f.object.classroom_id) %>
-    </div>
-
-    <div class="field">
-      <%= f.label :roles %>
-      <%= f.collection_select :role_ids, Role.all, :id, :name, {}, {:multiple => true} %>
-    </div>
-
-    
-  <div class="actions">
-    <%= f.submit %>
+    <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
   </div>
 <% end %>
+
+<div class="row">
+  <div class="col-md-6">
+    <%= form_for(@user, html: { multipart: true }) do |f| %>
+
+        <%= image_tag @user.avatar.url(:medium) %>
+        <div class="field">
+          <%= f.label :photo %>
+          <%= f.file_field :avatar, class: 'form-control' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :email %>
+          <%= f.text_field :email, class: 'form-control' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password %>
+          <%= f.password_field :password, class: 'form-control' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, class: 'form-control' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :classroom_id %>
+          <%= f.select :classroom_id, options_from_collection_for_select(Classroom.all, :id, :name, :selected => f.object.classroom_id) ,{}, {:class => 'form-control'}  %>
+        </div>
+
+        <div class="field">
+          <%= f.label :roles %>
+          <%= f.collection_select :role_ids, Role.all, :id, :name, {}, {:multiple => true, :class => 'form-control'} %>
+        </div>
+
+      <div class="actions">
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+        <%= link_to 'Cancel', @user, class: 'btn btn-primary' %>
+        <%= link_to 'List All Users', users_path, class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>
