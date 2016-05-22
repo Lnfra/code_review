@@ -11,6 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+// It is important to import the jquery.turbolinks library after jquery but before turbolinks to make it compatible
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
