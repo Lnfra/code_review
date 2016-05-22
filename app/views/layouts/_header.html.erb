@@ -11,11 +11,13 @@
       <a class="navbar-brand" href="#">Code Reviewer</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li><%= link_to "Home", landing_path %></li>
-        <li><%= link_to "Questions Index", questions_path %></li>
-        <li><%= link_to "Answers Index", answers_path %></li>
-      </ul>
+      <% if logged_in? %>
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Home", landing_path %></li>
+          <li><%= link_to "Questions Index", questions_path %></li>
+          <li><%= link_to "Answers Index", answers_path %></li>
+        </ul>
+      <% end %>
       <ul class="nav navbar-nav navbar-right">
         <% if get_current_user %>
             <li><%= link_to 'Logout', logout_path, method: :delete, data: {confirm: 'Are you Sure?'} %></li>

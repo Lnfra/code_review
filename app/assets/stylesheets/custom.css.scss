@@ -13,7 +13,11 @@ $gray-medium-light: #eaeaea;
 //Required for sticky nav bar
 body {
   min-height: 2000px;
-  padding-top: 70px;
+  padding-top: 90px;
+}
+
+.navbar {
+  min-height: 80px;
 }
 
 // Style for footer
