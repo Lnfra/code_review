@@ -28,7 +28,7 @@
     <!--Required to give the text_area a static id so that the ace js can correctly id it.   -->
     <div class="field">
       <%= f.label :content %><br>
-      <%= f.text_area :content, :id => "content" %>
+      <%= f.text_area :content, id: "content", style: "display:none;" %>
     </div>
 
     <div class="editor-wrapper">
