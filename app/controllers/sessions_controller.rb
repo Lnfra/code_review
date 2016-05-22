@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       redirect_to root_url
     else
       #else show message invalid login and display new page
-      flash.now[:alert] = "Invalid login details"
+      flash.now[:warning] = "Invalid login details"
       render 'new'
     end
   end
