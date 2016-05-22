@@ -24,7 +24,8 @@ class ClassroomsController < ApplicationController
     @classroom = Classroom.new(classroom_params)
 
     if @classroom.save
-      redirect_to @classroom, notice: 'Classroom was successfully created.'
+      flash[:success] = "Classroom was successfully created."
+      redirect_to @classroom
     else
       render :new
     end
@@ -33,7 +34,8 @@ class ClassroomsController < ApplicationController
   # PATCH/PUT /classrooms/1
   def update
     if @classroom.update(classroom_params)
-      redirect_to @classroom, notice: 'Classroom was successfully updated.'
+      flash[:success] = "Classroom was successfully updated."
+      redirect_to @classroom
     else
       render :edit
     end
@@ -42,7 +44,8 @@ class ClassroomsController < ApplicationController
   # DELETE /classrooms/1
   def destroy
     @classroom.destroy
-    redirect_to classrooms_url, notice: 'Classroom was successfully destroyed.'
+    flash[:success] = "Classroom was successfully deleted."
+    redirect_to classrooms_url
   end
 
   private

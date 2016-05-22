@@ -37,28 +37,30 @@ class UsersController < ApplicationController
     @user.roles << Role.find_by_name("Student")
 
     if @user.save
-        redirect_to @user, notice: 'User was successfully created.'
-      else
-        render :new
-      end
+      flash[:success] = "User was successfully created."
+      redirect_to @user
+    else
+      render :new
+    end
 
   end
 
   # PATCH/PUT /users/1
   def update
     if @user.update(user_params)
-       redirect_to @user, notice: 'User was successfully updated.'
+      flash[:success] = "User was successfully updated."
+      redirect_to @user
     else
       render :edit
     end
-
   end
 
   # DELETE /users/1
   def destroy
     @user.destroy
+    flash[:success] = "User was successfully deleted."
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url }
     end
   end
 

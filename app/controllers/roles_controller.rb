@@ -23,7 +23,8 @@ class RolesController < ApplicationController
   def create
     @role = Role.new(role_params)
     if @role.save
-      redirect_to @role, notice: 'Role was successfully created.'
+      flash[:success] = "Role was successfully created."
+      redirect_to @role
     else
       render :new
     end
@@ -32,7 +33,8 @@ class RolesController < ApplicationController
   # PATCH/PUT /roles/1
   def update
     if @role.update(role_params)
-      redirect_to @role, notice: 'Role was successfully updated.'
+      flash[:success] = "Role was successfully updated."
+      redirect_to @role
     else
       render :edit
     end
@@ -41,7 +43,8 @@ class RolesController < ApplicationController
   # DELETE /roles/1
   def destroy
     @role.destroy
-    redirect_to roles_url, notice: 'Role was successfully destroyed.'
+    flash[:success] = "Role was successfully deleted."
+    redirect_to roles_url
   end
 
   private

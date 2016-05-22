@@ -28,7 +28,8 @@ class AnswersController < ApplicationController
   def create_answer
     @answer = Answer.new(answer_params)
     if @answer.save
-      redirect_to @answer, notice: 'Answer was successfully created.'
+      flash[:success] = "Answer was successfully created."
+      redirect_to @answer
       # redirect_to answer_path(@answer, id: @answer.), :notice => 'Answer was successfully created.'
     else
       render :new
@@ -43,7 +44,8 @@ class AnswersController < ApplicationController
   def create
     @answer = Answer.new(answer_params)
     if @answer.save
-      redirect_to @answer, notice: 'Answer was successfully created.'
+      flash[:success] = "Answer was successfully created."
+      redirect_to @answer
     else
       render :new
     end
@@ -52,7 +54,8 @@ class AnswersController < ApplicationController
   # PATCH/PUT /answers/1
   def update
       if @answer.update(answer_params)
-        redirect_to @answer, notice: 'Answer was successfully updated.'
+        flash[:success] = "Answer was successfully updated."
+        redirect_to @answer
       else
         render :edit
       end
@@ -61,7 +64,8 @@ class AnswersController < ApplicationController
   # DELETE /answers/1
   def destroy
     @answer.destroy
-      redirect_to answers_url, notice: 'Answer was successfully destroyed.'
+    flash[:success] = "Answer was successfully deleted."
+      redirect_to answers_url
   end
 
   private

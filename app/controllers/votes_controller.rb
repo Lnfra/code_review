@@ -23,7 +23,8 @@ class VotesController < ApplicationController
   def create
     @vote = Vote.new(vote_params)
     if @vote.save
-      redirect_to @vote, notice: 'Vote was successfully created.'
+      flash[:success] = "Vote was successfully created."
+      redirect_to @vote
     else
       render :new
     end
@@ -32,7 +33,8 @@ class VotesController < ApplicationController
   # PATCH/PUT /votes/1
   def update
     if @vote.update(vote_params)
-      redirect_to @vote, notice: 'Vote was successfully updated.'
+      flash[:success] = "Vote was successfully updated."
+      redirect_to @vote
     else
       render :edit
     end
@@ -41,7 +43,8 @@ class VotesController < ApplicationController
   # DELETE /votes/1
   def destroy
     @vote.destroy
-    redirect_to votes_url, notice: 'Vote was successfully destroyed.'
+    flash[:success] = "Vote was successfully deleted."
+    redirect_to votes_url
   end
 
   private

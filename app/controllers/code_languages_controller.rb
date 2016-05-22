@@ -23,7 +23,8 @@ class CodeLanguagesController < ApplicationController
   def create
     @code_language = CodeLanguage.new(code_language_params)
     if @code_language.save
-      redirect_to @code_language, notice: 'Code language was successfully created.'
+      flash[:success] = "Code language was successfully created."
+      redirect_to @code_language
     else
       render :new
     end
@@ -32,7 +33,8 @@ class CodeLanguagesController < ApplicationController
   # PATCH/PUT /code_languages/1
   def update
     if @code_language.update(code_language_params)
-      redirect_to @code_language, notice: 'Code language was successfully updated.'
+      flash[:success] = "Code language was successfully updated."
+      redirect_to @code_language
     else
       render :edit
     end
@@ -41,7 +43,8 @@ class CodeLanguagesController < ApplicationController
   # DELETE /code_languages/1
   def destroy
     @code_language.destroy
-    redirect_to code_languages_url, notice: 'Code language was successfully destroyed.'
+    flash[:success] = "Code language was successfully deleted."
+    redirect_to code_languages_url
   end
 
   private

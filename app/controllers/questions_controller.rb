@@ -24,7 +24,8 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     if @question.save
-      redirect_to @question, notice: 'Question was successfully created.'
+      flash[:success] = "Question was successfully created."
+      redirect_to @question
     else
       render :new
     end
@@ -33,7 +34,8 @@ class QuestionsController < ApplicationController
   # PATCH/PUT /questions/1
   def update
     if @question.update(question_params)
-      redirect_to @question, notice: 'Question was successfully updated.'
+      flash[:success] = "Question was successfully updated."
+      redirect_to @question
     else
       render :edit
     end
@@ -42,7 +44,8 @@ class QuestionsController < ApplicationController
   # DELETE /questions/1
   def destroy
     @question.destroy
-    redirect_to questions_url, notice: 'Question was successfully destroyed.'
+    flash[:success] = "Question was successfully deleted."
+    redirect_to questions_url
   end
 
   private

@@ -23,7 +23,8 @@ class LocationsController < ApplicationController
   def create
     @location = Location.new(location_params)
     if @location.save
-      redirect_to @location, notice: 'Location was successfully created.'
+      flash[:success] = "Location was successfully created."
+      redirect_to @location
     else
       render :new
     end
@@ -32,7 +33,8 @@ class LocationsController < ApplicationController
   # PATCH/PUT /locations/1
   def update
     if @location.update(location_params)
-      redirect_to @location, notice: 'Location was successfully updated.'
+      flash[:success] = "Location was successfully updated."
+      redirect_to @location
     else
       render :edit
     end
@@ -41,7 +43,8 @@ class LocationsController < ApplicationController
   # DELETE /locations/1
   def destroy
     @location.destroy
-    redirect_to locations_url, notice: 'Location was successfully destroyed.'
+    flash[:success] = "Location was successfully deleted."
+    redirect_to locations_url
   end
 
   private
