@@ -16,4 +16,7 @@
 //= require turbolinks
 //= require ace-rails-ap
 //= require ace/theme-monokai
+//= require ace/mode-javascript
+//= require ace/mode-ruby
+//= require ace/mode-text
 //= require_tree .
