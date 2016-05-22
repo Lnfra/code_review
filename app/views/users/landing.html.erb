@@ -22,7 +22,7 @@
         <td><%= question.title %></td>
         <td><%= question.user.name %></td>
         <td>
-          <%= link_to 'View', question, {:class=>("btn btn-info")} %>
+          <%= link_to 'View', question, {:class=>("btn btn-primary")} %>
         </td>
       </tr>
     <% end %>
@@ -31,4 +31,4 @@
 
 <br>
 
-<%= link_to 'New Question', new_question_path, {:class=>("btn btn-info")} %>
+<%= link_to 'New Question', new_question_path, {:class=>("btn btn-primary")} %>

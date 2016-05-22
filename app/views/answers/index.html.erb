@@ -9,7 +9,7 @@
       <th>User</th>
       <th>Question</th>
       <th>Code language</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -22,9 +22,9 @@
         <td><%= answer.user.name %></td>
         <td><%= answer.question.title %></td>
         <td><%= answer.code_language.name %></td>
-        <td><%= link_to 'View', answer %></td>
-        <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
-        <td><%= link_to 'Delete', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'View', answer, class: 'btn btn-primary' %>
+        <%= link_to 'Edit', edit_answer_path(answer), class: 'btn btn-primary'  %>
+        <%= link_to 'Delete', answer, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary'  %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Answer', new_answer_path %>
+<%= link_to 'New Answer', new_answer_path, class: 'btn btn-primary' %>
