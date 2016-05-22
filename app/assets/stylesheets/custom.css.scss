@@ -1,0 +1,34 @@
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+
+//Required for sticky nav bar
+body {
+  min-height: 2000px;
+  padding-top: 70px;
+}
+
+// Style for Ace editor
+#editor {
+  width: 50%;
+  height: 200px;
+}
+
+.editor-wrapper {
+  position: relative;
+  margin: 10px 0;
+}
+
+// Style for answers
+
+// Style for classrooms
+
+// Style for comments
+
+// Style for locations
+
+// Style for questions
+
+// Style for roles
+
+// Style for votes

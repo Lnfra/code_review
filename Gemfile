@@ -1,12 +1,13 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+# Add bootstrap support
+gem 'bootstrap-sass'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -32,18 +33,14 @@ gem "fog"
 gem "figaro"
 
 #for heroku deployment
-gem 'rails_12factor', group: :production
-gem 'puma'
+group :production do
+  gem 'rails_12factor'
+  gem 'puma'
+end
 
 # Require the Markdown converter gem
 #https://github.com/vmg/redcarpet
 gem 'redcarpet'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
