@@ -1,6 +1,6 @@
 
 $( document ).ready( function() {
-
+    
     function checkMode(){
       if($('#editor').hasClass("markdown")){
           return "ace/mode/markdown"
@@ -9,6 +9,10 @@ $( document ).ready( function() {
       }
     }
 
+    //Exit this script if #editor does not exist on the page
+    if ( $('#editor').length == 0){
+        return;
+    }
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/monokai");
     editor.getSession().setMode(checkMode());
