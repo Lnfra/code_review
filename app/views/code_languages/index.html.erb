@@ -2,7 +2,7 @@
 
 <h1>Listing Code Languages</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
@@ -14,9 +14,9 @@
     <% @code_languages.each do |code_language| %>
       <tr>
         <td><%= code_language.name %></td>
-        <td><%= link_to 'Show', code_language %></td>
-        <td><%= link_to 'Edit', edit_code_language_path(code_language) %></td>
-        <td><%= link_to 'Destroy', code_language, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', code_language, class: 'btn btn-primary' %>
+        <%= link_to 'Edit', edit_code_language_path(code_language), class: 'btn btn-primary' %>
+        <%= link_to 'Destroy', code_language, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Code language', new_code_language_path %>
+<%= link_to 'New Code language', new_code_language_path, class: 'btn btn-primary' %>
