@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
   def new
+    if logged_in?
+      redirect_to landing_url
+    end
   end
 
   def create
@@ -9,16 +12,18 @@ class SessionsController < ApplicationController
 
       #Do not save in cookies, save in the session so that user cannot manually edit these values
       session[:user_id] = user.id
-      redirect_to root_url, notice: "logged in"
+      flash[:success] = "Login successful"
+      redirect_to root_url
     else
       #else show message invalid login and display new page
-      flash.now.alert = "invalid login details"
+      flash.now[:alert] = "Invalid login details"
       render 'new'
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_url, notice: "logged out!"
+    flash[:success] = "Logout successful"
+    redirect_to root_url
   end
 end
