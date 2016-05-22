@@ -1,5 +1,5 @@
 <!-- Fixed navbar -->
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -12,11 +12,9 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href=<%= landing_path %>>Home</a></li>
-        <li><a href="../questions">Questions Index</a></li>
-        <li><a href="../answers">Answers Index</a></li>
-        <li class="dropdown">
-
+        <li><%= link_to "Home", landing_path %></li>
+        <li><%= link_to "Questions Index", questions_path %></li>
+        <li><%= link_to "Answers Index", answers_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if get_current_user %>
@@ -27,7 +25,7 @@
         </li>
 
         <% if get_current_user%>
-            <li><a href=<%= "../users/" + get_current_user.id.to_s %>  ><%= image_tag get_current_user.avatar.url(:thumb) %></a></li>
+            <li><%= link_to image_tag(get_current_user.avatar.url(:thumb)), get_current_user %></li>
         <% end %>
 
       </ul>
