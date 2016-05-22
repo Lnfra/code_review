@@ -17,9 +17,7 @@
     <% @answers.each do |answer| %>
       <tr>
           <td>
-           <pre class="prettyprint">
-              <%= answer.content %>
-           </pre>
+           <pre class="prettyprint"><%= answer.content %></pre>
           </td>
         <td><%= answer.user.name %></td>
         <td><%= answer.question.title %></td>

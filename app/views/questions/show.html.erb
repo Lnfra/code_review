@@ -21,9 +21,7 @@
     <% @question.answers.each do |answer| %>
         <div class="thumbnail">
           <span class="badge"><%= answer.code_language.name %></span>
-          <pre class="prettyprint">
-            <%= answer.content %>
-          </pre>
+          <pre class="prettyprint"><%= answer.content %></pre>
           <div class="caption">
             <span><%= image_tag answer.user.avatar.url(:thumb) %> <%= answer.user.name %></span>
           </div>

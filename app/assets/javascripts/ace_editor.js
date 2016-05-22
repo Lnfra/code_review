@@ -27,7 +27,7 @@ $( document ).ready( function() {
     editor.setShowPrintMargin(false);
 
     editor.getSession().on('change', function(){
-    textarea.val(editor.getSession().getValue());
+        textarea.val(editor.getSession().getValue());
     });
 
     $( "#answer_code_language_id" ).change(function() {
