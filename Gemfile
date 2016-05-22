@@ -39,8 +39,13 @@ group :production do
 end
 
 # Require the Markdown converter gem
-#https://github.com/vmg/redcarpet
+# https://github.com/vmg/redcarpet
 gem 'redcarpet'
+
+# Ace editor gem
+# https://github.com/codykrieger/ace-rails-ap
+gem 'ace-rails-ap'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

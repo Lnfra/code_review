@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     CFPropertyList (2.3.2)
+    ace-rails-ap (4.0.2)
     actionmailer (4.2.6)
       actionpack (= 4.2.6)
       actionview (= 4.2.6)
@@ -293,6 +294,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ace-rails-ap
   bcrypt (~> 3.1.7)
   bootstrap-sass
   byebug
