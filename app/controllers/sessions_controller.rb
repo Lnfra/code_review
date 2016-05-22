@@ -3,8 +3,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_email(params[:email])
-    if user && user.authenticate(params[:password])
+    user = User.find_by(email: params[:session][:email])
+    if user && user.authenticate(params[:session][:password])
       #If user successfully logged in redirect them to the root path and save in their flash cookie that the user is an authenticated user
 
       #Do not save in cookies, save in the session so that user cannot manually edit these values
