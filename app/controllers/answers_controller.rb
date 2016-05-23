@@ -29,7 +29,8 @@ class AnswersController < ApplicationController
     @answer = Answer.new(answer_params)
     if @answer.save
       flash[:success] = "Answer was successfully created."
-      redirect_to @answer
+      redirect_to question_path(@answer.question.id)
+      # redirect_to @answer
       # redirect_to answer_path(@answer, id: @answer.), :notice => 'Answer was successfully created.'
     else
       render :new
