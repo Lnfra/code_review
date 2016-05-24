@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   #route for landing page
   get 'landing', to: 'users#landing'
 
+  #route for leaderboard
+  get 'leaderboard', to: 'answers#leaderboard'
+
   #route for submitting a new answer for a question
   get 'submit_answer/:id' => 'answers#submit_answer',  as: :submit_answer
 
