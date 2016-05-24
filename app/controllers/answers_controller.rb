@@ -2,7 +2,7 @@ class AnswersController < ApplicationController
 
   before_action :restrict_access, only: [:edit, :update, :destroy, :landing, :index]
 
-  before_action :set_answer, only: [:show, :edit, :update, :destroy]
+  before_action :set_answer, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 
   # GET /answers
   def index
@@ -67,6 +67,24 @@ class AnswersController < ApplicationController
     @answer.destroy
     flash[:success] = "Answer was successfully deleted."
       redirect_to answers_url
+  end
+
+  #upvote_from user
+  #downvote_from user
+  def upvote
+    # upvote on current answer scope to this question id
+    # Note it is important to convert scope to a string otherwise not recognised by gem
+    # @answer.upvote_from get_current_user, vote_scope: @answer.question.id.to_s
+    @answer.upvote_from get_current_user
+    redirect_to question_path(@answer.question_id)
+  end
+
+  def downvote
+    # downvote on current answer scope to this question id
+    # Note it is important to convert scope to a string otherwise not recognised by gem
+    # @answer.downvote_from get_current_user, vote_scope: @answer.question.id.to_s
+    @answer.downvote_from get_current_user
+    redirect_to question_path(@answer.question_id)
   end
 
   private

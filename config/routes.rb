@@ -4,7 +4,14 @@ Rails.application.routes.draw do
   resources :locations
   resources :votes
   resources :comments
-  resources :answers
+
+  resources :answers do
+    member do
+      put 'like' => 'answers#upvote'
+      put 'unlike' => 'answers#downvote'
+    end
+  end
+
   resources :questions
   resources :classrooms
   resources :users

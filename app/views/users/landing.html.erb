@@ -18,9 +18,9 @@
   <tbody>
     <% @questions.each do |question| %>
       <tr>
-        <td><%= question.id %></td>
-        <td><%= question.title %></td>
-        <td><%= question.user.name %></td>
+        <td><%= question.try(:id) %></td>
+        <td><%= question.try(:title) %></td>
+        <td><%= question.try(:user).try(:name) %></td>
         <td>
           <%= link_to 'View', question, {:class=>("btn btn-primary")} %>
         </td>

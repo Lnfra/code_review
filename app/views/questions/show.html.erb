@@ -18,12 +18,14 @@
     <p>
       <h2>Total Answers: <span class="badge"> <%= @question.answers.count %> </span></h2>
     </p>
-    <% @question.answers.each do |answer| %>
+
+    <% @question.answers.order( :cached_votes_score => :desc ).each do |answer| %>
         <div class="thumbnail">
           <span class="badge"><%= answer.code_language.name %></span>
           <pre class="prettyprint"><%= answer.content %></pre>
           <div class="caption">
             <span><%= image_tag answer.user.avatar.url(:thumb) %> <%= answer.user.name %></span>
+            <%= render partial: 'layouts/voteButtons', locals: {answer: answer} %>
           </div>
         </div> <!-- end of thumbnail-->
     <% end %>

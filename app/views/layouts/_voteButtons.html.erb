@@ -1,0 +1,17 @@
+<!--If user voted for this question before, disable all buttons except the one voted-->
+<!--If user clicks-->
+
+<%= link_to unlike_answer_path(answer), class: "like pull-right", method: :put do %>
+    <button type="button" class="btn btn-danger" aria-label="Left Align">
+      <span class="glyphicon glyphicon-thumbs-down glyphicon-align-center" aria-hidden=""true></span>
+      <span class="badge"><%= answer.get_downvotes.size %></span>
+    </button>
+<% end %>
+
+<%= link_to like_answer_path(answer), class: "like pull-right", method: :put do %>
+  <button type="button" class="btn btn-success" aria-label="Left Align">
+    <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hidden=""true></span>
+    <span class="badge"><%= answer.get_upvotes.size %></span>
+  </button>
+<% end %>
+

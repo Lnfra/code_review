@@ -52,6 +52,20 @@ footer {
   @include box_sizing;
 }
 
+//Stype for code language badge
+.badge {
+  margin: 5px;
+}
+
+//Style for vote buttons
+.like {
+  margin: 5px;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
 // Style for answers
 
 // Style for classrooms

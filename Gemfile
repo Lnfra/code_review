@@ -51,6 +51,8 @@ gem 'redcarpet'
 # https://github.com/codykrieger/ace-rails-ap
 gem 'ace-rails-ap'
 
+# Acts_as Votable Gem
+gem 'acts_as_votable'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

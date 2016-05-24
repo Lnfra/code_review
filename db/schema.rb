@@ -11,19 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160321092022) do
+ActiveRecord::Schema.define(version: 20160523223338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
     t.text     "content"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.integer  "user_id"
     t.integer  "question_id"
     t.integer  "code_language_id"
+    t.integer  "cached_votes_total",      default: 0
+    t.integer  "cached_votes_score",      default: 0
+    t.integer  "cached_votes_up",         default: 0
+    t.integer  "cached_votes_down",       default: 0
+    t.integer  "cached_weighted_score",   default: 0
+    t.integer  "cached_weighted_total",   default: 0
+    t.float    "cached_weighted_average", default: 0.0
   end
+
+  add_index "answers", ["cached_votes_down"], name: "index_answers_on_cached_votes_down", using: :btree
+  add_index "answers", ["cached_votes_score"], name: "index_answers_on_cached_votes_score", using: :btree
+  add_index "answers", ["cached_votes_total"], name: "index_answers_on_cached_votes_total", using: :btree
+  add_index "answers", ["cached_votes_up"], name: "index_answers_on_cached_votes_up", using: :btree
+  add_index "answers", ["cached_weighted_average"], name: "index_answers_on_cached_weighted_average", using: :btree
+  add_index "answers", ["cached_weighted_score"], name: "index_answers_on_cached_weighted_score", using: :btree
+  add_index "answers", ["cached_weighted_total"], name: "index_answers_on_cached_weighted_total", using: :btree
 
   create_table "classrooms", force: :cascade do |t|
     t.string   "name"
@@ -89,10 +104,18 @@ ActiveRecord::Schema.define(version: 20160321092022) do
   end
 
   create_table "votes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "user_id"
-    t.integer  "answer_id"
+    t.integer  "votable_id"
+    t.string   "votable_type"
+    t.integer  "voter_id"
+    t.string   "voter_type"
+    t.boolean  "vote_flag"
+    t.string   "vote_scope"
+    t.integer  "vote_weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
+  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
 end
