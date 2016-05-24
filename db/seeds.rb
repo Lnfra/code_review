@@ -100,9 +100,57 @@ end
         :classroom => Classroom.find_by_name('SG WDI 2')
     },
     {
-        :name => 'John',
+        :name => 'Allan',
         :roles => Role.where(:name => ['Student']),
-        :email => 'john@gf.com',
+        :email => 'Allan@gf.com',
+        :password => 'password',
+        :password_confirmation => 'password',
+        :classroom => Classroom.find_by_name('SG WDI 2')
+    },
+    {
+        :name => 'Gabrielle',
+        :roles => Role.where(:name => ['Teaching Assistant']),
+        :email => 'gabrielle@gf.com',
+        :password => 'password',
+        :password_confirmation => 'password',
+        :classroom => Classroom.find_by_name('SG WDI 2')
+    },
+    {
+        :name => 'Hakim',
+        :roles => Role.where(:name => ['Student']),
+        :email => 'hakim@gf.com',
+        :password => 'password',
+        :password_confirmation => 'password',
+        :classroom => Classroom.find_by_name('SG WDI 2')
+    },
+    {
+        :name => 'Joanne',
+        :roles => Role.where(:name => ['Student']),
+        :email => 'joanne@gf.com',
+        :password => 'password',
+        :password_confirmation => 'password',
+        :classroom => Classroom.find_by_name('SG WDI 2')
+    },
+    {
+        :name => 'Junius',
+        :roles => Role.where(:name => ['Student']),
+        :email => 'junius@gf.com',
+        :password => 'password',
+        :password_confirmation => 'password',
+        :classroom => Classroom.find_by_name('SG WDI 2')
+    },
+    {
+        :name => 'Leok Si',
+        :roles => Role.where(:name => ['Student']),
+        :email => 'leoksi@gf.com',
+        :password => 'password',
+        :password_confirmation => 'password',
+        :classroom => Classroom.find_by_name('SG WDI 2')
+    },
+    {
+        :name => 'David',
+        :roles => Role.where(:name => ['Student']),
+        :email => 'david@gf.com',
         :password => 'password',
         :password_confirmation => 'password',
         :classroom => Classroom.find_by_name('SG WDI 2')
