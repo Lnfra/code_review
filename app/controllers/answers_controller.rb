@@ -87,6 +87,12 @@ class AnswersController < ApplicationController
     redirect_to question_path(@answer.question_id)
   end
 
+  # Serve Leaderboard
+  def leaderboard
+    # find top 10 answers with the most votes
+    @topAnswers = Answer.order(:cached_votes_score => :desc ).take(10)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_answer
