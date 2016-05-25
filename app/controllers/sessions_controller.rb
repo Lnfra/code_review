@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       #Do not save in cookies, save in the session so that user cannot manually edit these values
       session[:user_id] = user.id
       flash[:success] = "Login successful"
-      redirect_to root_url
+      redirect_to landing_url
     else
       #else show message invalid login and display new page
       flash.now[:warning] = "Invalid login details"
@@ -26,4 +26,8 @@ class SessionsController < ApplicationController
     flash[:success] = "Logout successful"
     redirect_to root_url
   end
+
+  def home
+  end
+
 end

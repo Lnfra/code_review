@@ -33,8 +33,8 @@ Rails.application.routes.draw do
   #route for creating submitted answer for a question
   post 'create_answer' => 'answers#create_answer'
 
-  # Forward all users to login page
-  root "sessions#new"
+  # Forward all users to main page
+  root "sessions#home"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

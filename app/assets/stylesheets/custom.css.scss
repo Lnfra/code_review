@@ -66,6 +66,17 @@ footer {
   }
 }
 
+//Background for front page
+.jumbotron {
+  color: whitesmoke;
+  background:
+          linear-gradient(
+                          rgba(0, 0, 0, 0.5),
+                          rgba(0, 0, 0, 0.5)
+          ),
+          url("frontpage.jpg");
+}
+
 // Style for answers
 
 // Style for classrooms
